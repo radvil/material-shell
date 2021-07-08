@@ -1,0 +1,61 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~devextreme/dist/css/dx.common.css";
+@import "~devextreme/dist/css/dx.light.css";
+@import "~devexpress-diagram/dist/dx-diagram.min.css";
+
+html,
+body {
+  height: 100%;
+  background-color: #edf1f7;
+
+  ::-webkit-scrollbar {
+    height: 7px;
+    width: 7px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: #f7f9fc;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #e4e9f2;
+  }
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.dx-diagram.dx-diagram-fullscreen {
+  z-index: 9999 !important;
+}
+
+mat-card {
+  &.section-card {
+    padding: 0;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem 0 rgb(44 51 73 / 10%) !important;
+    .mat-card-header {
+      padding: 1rem;
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+    .mat-card-header-text {
+      margin: 0 !important;
+    }
+    .mat-card-content {
+      padding: 1rem;
+    }
+  }
+}
+
+.mat-menu-content:not(:empty) {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  .mat-menu-item {
+    padding: 0 10px !important;
+  }
+  .mat-icon {
+    margin-right: 10px !important;
+  }
+}

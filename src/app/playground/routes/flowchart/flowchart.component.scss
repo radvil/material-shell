@@ -1,0 +1,31 @@
+:host ::ng-deep {
+  display: block;
+  height: inherit;
+  width: inherit;
+
+  .ngx-charts {
+    background-color: #f1f1f1;
+  }
+
+  .linkMidpoint {
+    ellipse {
+      fill: white;
+      stroke: black;
+      stroke-width: 1;
+    }
+
+    text {
+      stroke: transparent;
+      fill: black;
+      text-anchor: middle;
+      font-size: 10px;
+    }
+  }
+}
+
+.fx-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

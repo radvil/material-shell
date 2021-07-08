@@ -1,0 +1,175 @@
+<mat-card class="section-card">
+  <mat-card-header>
+    <div class="fx-container">
+      <div>Flowchart Example</div>
+      <button
+        mat-flat-button
+        (click)="toggleRandomNodes()"
+        [color]="isRandoming ? 'warn' : 'primary'"
+      >
+        <mat-icon>{{ isRandoming ? "shuffle_on" : "shuffle" }}</mat-icon
+        >&nbsp;{{ isRandoming ? "Stop shuffle" : "Shuffle Node" }}
+      </button>
+    </div>
+  </mat-card-header>
+
+  <mat-card-content raxViewport>
+    <ngx-graph
+      [view]="[800, 450]"
+      [links]="flowchartData.links"
+      [nodes]="flowchartData.nodes"
+      [curve]="curve"
+      [nodeWidth]="200"
+      [nodeHeight]="150"
+      [enableZoom]="true"
+      [autoZoom]="false"
+      [layoutSettings]="layoutSettings"
+      [layout]="dagreLayout"
+    >
+      <ng-template #defsTemplate>
+        <svg:marker
+          id="arrow"
+          viewBox="0 -5 10 10"
+          refX="8"
+          refY="0"
+          markerWidth="4"
+          markerHeight="4"
+          orient="auto"
+        >
+          <svg:path d="M0,-5L10,0L0,5" class="arrow-head" />
+        </svg:marker>
+      </ng-template>
+
+      <ng-template #nodeTemplate let-node>
+        <ng-container [ngSwitch]="node.type">
+          <svg:g
+            nodeConnector
+            class="node"
+            [label]="node.label"
+            *ngSwitchCase="'connector'"
+            [nodeStyle]="node.nodeStyle"
+            (contextmenu)="onContextMenu($event, node)"
+          ></svg:g>
+
+          <svg:g
+            nodeData
+            class="node"
+            [label]="node.label"
+            *ngSwitchCase="'data'"
+            [nodeStyle]="node.nodeStyle"
+            (contextmenu)="onContextMenu($event, node)"
+          ></svg:g>
+
+          <svg:g
+            nodeDecision
+            class="node"
+            [label]="node.label"
+            *ngSwitchCase="'decision'"
+            [nodeStyle]="node.nodeStyle"
+            (contextmenu)="onContextMenu($event, node)"
+          ></svg:g>
+
+          <svg:g
+            nodeEightEdges
+            class="node"
+            [label]="node.label"
+            *ngSwitchCase="'eight-edges'"
+            [nodeStyle]="node.nodeStyle"
+            (contextmenu)="onContextMenu($event, node)"
+          ></svg:g>
+
+          <svg:g
+            nodeEllipse
+            class="node"
+            [label]="node.label"
+            *ngSwitchCase="'ellipse'"
+            [nodeStyle]="node.nodeStyle"
+            (contextmenu)="onContextMenu($event, node)"
+          ></svg:g>
+
+          <svg:g
+            nodeMerge
+            class="node"
+            [label]="node.label"
+            *ngSwitchCase="'merge'"
+            [nodeStyle]="node.nodeStyle"
+            (contextmenu)="onContextMenu($event, node)"
+          ></svg:g>
+
+          <svg:g
+            nodeProcess
+            class="node"
+            [label]="node.label"
+            *ngSwitchCase="'process'"
+            [nodeStyle]="node.nodeStyle"
+            (contextmenu)="onContextMenu($event, node)"
+          ></svg:g>
+
+          <svg:g
+            nodePreparation
+            class="node"
+            [label]="node.label"
+            *ngSwitchCase="'preparation'"
+            [nodeStyle]="node.nodeStyle"
+            (contextmenu)="onContextMenu($event, node)"
+          ></svg:g>
+
+          <svg:g
+            nodeSquircle
+            class="node"
+            [label]="node.label"
+            *ngSwitchCase="'squircle'"
+            [nodeStyle]="node.nodeStyle"
+            (contextmenu)="onContextMenu($event, node)"
+          ></svg:g>
+
+          <svg:g
+            nodeTerminator
+            class="node"
+            [label]="node.label"
+            *ngSwitchCase="'terminator'"
+            [nodeStyle]="node.nodeStyle"
+            (contextmenu)="onContextMenu($event, node)"
+          ></svg:g>
+        </ng-container>
+      </ng-template>
+
+      <ng-template #linkTemplate let-link>
+        <svg:g class="edge">
+          <svg:path class="line" stroke-width="2" marker-end="url(#arrow)"></svg:path>
+        </svg:g>
+        <svg:g
+          *ngIf="link.midPoint"
+          class="linkMidpoint"
+          [attr.transform]="'translate(' + link.midPoint.x + ',' + link.midPoint.y + ')'"
+          [attr.fill]="'#fff'"
+        >
+          <!-- <ellipse rx="40" ry="15" />
+          <svg:text alignment-baseline="central">{{ link.label }}</svg:text> -->
+        </svg:g>
+      </ng-template>
+    </ngx-graph>
+  </mat-card-content>
+</mat-card>
+
+<!-- contextMenu -->
+<ng-container>
+  <div
+    style="visibility: hidden; position: fixed"
+    [style.left]="contextMenuPosition.x"
+    [style.top]="contextMenuPosition.y"
+    [matMenuTriggerFor]="contextMenu"
+  ></div>
+  <mat-menu #contextMenu="matMenu">
+    <ng-template matMenuContent let-item="item">
+      <button mat-menu-item (click)="editNode(item)">
+        <mat-icon>edit</mat-icon>
+        Edit
+      </button>
+      <button mat-menu-item (click)="removeNode(item)">
+        <mat-icon color="warn">delete</mat-icon>
+        Remove
+      </button>
+    </ng-template>
+  </mat-menu>
+</ng-container>

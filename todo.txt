@@ -1,0 +1,16 @@
+[✔️] rect > process
+[✔️] decision > diamond
+[✔️] terminator > semi border radius ellipse
+[✔️] Connector > circle
+[✔️] Data > Sisi miring
+[✔️] Preparation > segi enam
+[✔️] Eight Edges > segi delapan
+[✔️] merge > segi tiga terbalik
+
+[✔️] Conditional Node
+[] Merge variables
+[] Fix issue on Node with different size
+[] Make self module for reusable component
+[] Make Node List sidebar component
+[] Add new node
+[] Transform position on Add Node

@@ -1,0 +1,214 @@
+<mat-card class="section-card">
+  <mat-card-header>SVG Crash Course</mat-card-header>
+
+  <mat-card-content raxViewport [raxViewportHeight]="900">
+    <svg raxSvgCanvas [style.backgroundColor]="'#f1f1f1'">
+      <circle
+        [attr.cx]="100"
+        [attr.cy]="100"
+        [attr.r]="40"
+        [attr.stroke]="'#666'"
+        [attr.stroke-width]="5"
+        [attr.fill]="'#ff0000'"
+      />
+
+      <rect
+        [attr.x]="200"
+        [attr.y]="20"
+        [attr.width]="150"
+        [attr.height]="150"
+        [ngStyle]="{
+          fill: 'blue',
+          stroke: 'pink',
+          strokeWidth: 5,
+          fillOpacity: 0.1,
+          strokeOpacity: 0.9
+        }"
+      />
+
+      <ellipse
+        [attr.cx]="500"
+        [attr.cy]="100"
+        [attr.rx]="100"
+        [attr.ry]="50"
+        style="fill: yellow; stroke: purple; stroke-width: 2"
+      />
+
+      <ellipse
+        [attr.cx]="740"
+        [attr.cy]="100"
+        [attr.rx]="90"
+        [attr.ry]="30"
+        style="fill: purple"
+      />
+      <ellipse
+        [attr.cx]="720"
+        [attr.cy]="70"
+        [attr.rx]="80"
+        [attr.ry]="20"
+        style="fill: lime"
+      />
+      <ellipse
+        [attr.cx]="710"
+        [attr.cy]="45"
+        [attr.rx]="70"
+        [attr.ry]="15"
+        style="fill: yellow"
+      />
+
+      <line
+        [attr.x1]="800"
+        [attr.y1]="10"
+        [attr.x2]="950"
+        [attr.y2]="200"
+        style="stroke: rgb(255, 0, 0); stroke-width: 2"
+      />
+
+      <!-- 2nd row -->
+      <polygon
+        [attr.points]="'50,200 10,390 160,410'"
+        style="fill: lime; stroke: purple; stroke-width: 1"
+      />
+      <polygon
+        [attr.points]="'200,200 210,390 220, 410 350, 410'"
+        style="fill: deeppink; stroke: bisque; stroke-width: 5"
+      />
+      <polygon
+        [attr.points]="'450,210 390,398 540,278 360,278 510,398'"
+        style="fill: bisque; stroke: deeppink; stroke-width: 5; fill-rule: evenodd"
+      />
+
+      <polyline
+        [attr.points]="'580,220 600,225 620,240 640,320 680,340 760,380'"
+        style="fill: none; stroke: #ff0000; stroke-width: 5"
+      />
+      <polyline
+        [attr.points]="'780,240 820,240 820,280 860,280 860,320 900,320 900,360'"
+        style="fill: bisque; stroke: red; stroke-width: 4"
+      />
+
+      <!-- 3rd row => y starts from 450 -->
+      <path
+        [attr.d]="'M150 450 L75 550 L225 550 Z'"
+        style="fill: bisque; stroke: red; stroke-width: 4"
+      />
+      <text [attr.x]="150 - (225 - 75) / 4" [attr.y]="550 - 100 / 4" fill="black">
+        Test SVG!
+      </text>
+
+      <g [attr.fill]="'none'">
+        <path
+          [attr.stroke]="'red'"
+          [attr.stroke-width]="2"
+          [attr.d]="'M250 480 l315 0'"
+        />
+        <path
+          [attr.stroke]="'black'"
+          [attr.stroke-width]="4"
+          [attr.d]="'M250 500 l315 0'"
+        />
+        <path
+          [attr.stroke]="'blue'"
+          [attr.stroke-width]="6"
+          [attr.d]="'M250 520 l315 0'"
+        />
+      </g>
+      <g [attr.fill]="'none'" [attr.stroke]="'black'" [attr.stroke-width]="6">
+        <path [attr.d]="'M570 480 l315 0'" />
+        <path [attr.d]="'M570 500 l315 0'" />
+        <path [attr.d]="'M570 520 l315 0'" />
+      </g>
+
+      <!-- 4th row y starts from 600-->
+      <defs>
+        <filter id="f1" [attr.x]="0" [attr.y]="0">
+          <feGaussianBlur in="SourceGraphic" [attr.stdDeviation]="50" />
+        </filter>
+      </defs>
+      <rect
+        [attr.x]="50"
+        [attr.y]="600"
+        [attr.width]="200"
+        [attr.height]="90"
+        [attr.stroke]="'bisque'"
+        [attr.stroke-width]="3"
+        [attr.fill]="'yellow'"
+        filter="url(#f1)"
+      />
+
+      <defs>
+        <filter
+          id="f2"
+          [attr.x]="0"
+          [attr.y]="0"
+          [attr.width]="'200%'"
+          [attr.height]="'200%'"
+        >
+          <feOffset
+            result="offOut"
+            [attr.in]="'SourceGraphic'"
+            [attr.dx]="20"
+            [attr.dy]="20"
+          />
+          <feGaussianBlur
+            result="blurOut"
+            [attr.in]="'offOut'"
+            [attr.stdDeviation]="10"
+          />
+          <feBlend
+            [attr.in]="'SourceGraphic'"
+            [attr.in2]="'blurOut'"
+            [attr.mode]="'normal'"
+          />
+        </filter>
+      </defs>
+      <rect
+        [attr.x]="300"
+        [attr.y]="600"
+        [attr.width]="90"
+        [attr.height]="90"
+        [attr.stroke]="'bisque'"
+        [attr.stroke-width]="3"
+        [attr.fill]="'yellow'"
+        [attr.filter]="'url(#f2)'"
+      />
+
+      <defs>
+        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color: rgb(255, 255, 0); stop-opacity: 1" />
+          <stop offset="100%" style="stop-color: rgb(255, 0, 0); stop-opacity: 1" />
+        </linearGradient>
+      </defs>
+      <ellipse
+        [attr.cx]="525"
+        [attr.cy]="645"
+        [attr.rx]="85"
+        [attr.ry]="55"
+        fill="url(#grad1)"
+      />
+      <text
+        [attr.fill]="'#ffffff'"
+        [attr.font-size]="45"
+        [attr.font-family]="'Verdana'"
+        [attr.x]="475"
+        [attr.y]="645 + 54 / 4"
+      >
+        SVG
+      </text>
+
+      <defs>
+        <radialGradient id="grad4" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+          <stop offset="0%" style="stop-color: #ffff00; stop-opacity: 0.7" />
+          <stop offset="100%" style="stop-color: #ff0000; stop-opacity: 1" />
+        </radialGradient>
+      </defs>
+      <ellipse
+        [attr.cx]="720"
+        [attr.cy]="645"
+        [attr.rx]="90"
+        [attr.ry]="55"
+        [attr.fill]="'url(#grad4)'"
+      />
+    </svg>
+  </mat-card-content>
+</mat-card>

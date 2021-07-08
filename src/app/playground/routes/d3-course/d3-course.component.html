@@ -1,0 +1,38 @@
+<!-- <svg-container
+  title="SVG Smiley Face"
+  [width]="svgConfig.width"
+  [height]="svgConfig.height"
+>
+  <svg [attr.width]="svgConfig.width" [attr.height]="svgConfig.height">
+    <g [attr.transform]="groupTransform">
+      <circle
+        [attr.r]="radiusY"
+        [attr.cx]="centerX"
+        [attr.cy]="centerY"
+        [attr.fill]="svgConfig.fill"
+        [attr.stroke]="svgConfig.stroke"
+        [attr.stroke-width]="svgConfig.strokeWidth"
+      />
+      <circle [attr.r]="eyeRadius" [attr.cx]="-eyeOffsetX" [attr.cy]="-eyeOffsetY" />
+      <circle [attr.r]="eyeRadius" [attr.cx]="eyeOffsetX" [attr.cy]="-eyeOffsetY" />
+
+      <path [attr.d]="mouthArc" />
+    </g>
+  </svg>
+</svg-container> -->
+
+<svg>
+  <g class="node" xmlns="http://www.w3.org/2000/xhtml" width="150" height="100">
+    <foreignObject width="150" height="100">
+      <div
+        class="shape"
+        style="background-color: red"
+        xmlns="http://www.w3.org/1999/xhtml"
+      >
+        <label class="name">Test Name</label>
+        <label>Test title</label>
+        <label>Test subtitle</label>
+      </div>
+    </foreignObject>
+  </g>
+</svg>

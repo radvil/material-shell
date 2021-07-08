@@ -1,0 +1,57 @@
+<mat-card class="dx-viewport">
+  <dx-diagram
+    #diagram
+    id="diagram"
+    (onContentReady)="onContentReady()"
+    (onCustomCommand)="onCustomCommand($event)"
+  >
+    <dxo-main-toolbar [visible]="true">
+      <dxi-command name="undo"></dxi-command>
+      <dxi-command name="redo"></dxi-command>
+
+      <dxi-command name="separator"></dxi-command>
+      <dxi-command name="importData" icon="activefolder" text="Import Data"></dxi-command>
+      <dxi-command name="exportData" icon="download" text="Export Data"></dxi-command>
+      <dxi-command name="separator"></dxi-command>
+
+      <dxi-command name="fontName"></dxi-command>
+      <dxi-command name="fontSize"></dxi-command>
+      <dxi-command name="separator"></dxi-command>
+      <dxi-command name="bold"></dxi-command>
+      <dxi-command name="italic"></dxi-command>
+      <dxi-command name="underline"></dxi-command>
+      <dxi-command name="separator"></dxi-command>
+      <dxi-command name="fontColor"></dxi-command>
+      <dxi-command name="lineColor"></dxi-command>
+      <dxi-command name="fillColor"></dxi-command>
+      <dxi-command name="separator"></dxi-command>
+    </dxo-main-toolbar>
+
+    <dxo-toolbox
+      [width]="200"
+      [shapeIconsPerRow]="3"
+      [showSearch]="false"
+      visibility="visible"
+    >
+      <dxi-group category="flowchart" title="Shapes" [expanded]="true"></dxi-group>
+      <dxi-group category="containers" title="Containers" [expanded]="true"></dxi-group>
+      <dxi-group category="orgChart" title="Cards" [expanded]="true"></dxi-group>
+    </dxo-toolbox>
+
+    <dxo-history-toolbar [visible]="false"></dxo-history-toolbar>
+
+    <dxo-view-toolbar
+      [visible]="true"
+      [commands]="['zoomLevel', 'fullScreen']"
+    ></dxo-view-toolbar>
+
+    <dxo-properties-panel visibility="hidden" [ngClass]="'test'">
+      <dxi-tab>
+        <dxi-group
+          title="Page Properties"
+          [commands]="['pageSize', 'pageOrientation']"
+        ></dxi-group>
+      </dxi-tab>
+    </dxo-properties-panel>
+  </dx-diagram>
+</mat-card>
